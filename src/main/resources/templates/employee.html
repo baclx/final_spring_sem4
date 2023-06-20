@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th ="http://www.thymleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1" style="width: 100%">
+        <tr>
+            <th>Name:</th>
+            <th>Wage:</th>
+        </tr>
+
+        <tr th:each = "emp : ${allEmp}">
+            <td th:text="${emp.name}"></td>
+            <td th:text="${emp.wage}"></td>
+        </tr>
+</table>
+
+<form style="margin-top: 50px" th:action="@{/employee/save}" th:method="POST" th:object ="${emp}">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" th:field ="*{name}" id="name"/>
+    </div>
+    <div>
+        <label for="wage">Wage:</label>
+        <input type="text" th:field ="*{wage}" id="wage"/>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
